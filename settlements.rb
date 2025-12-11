@@ -1,5 +1,3 @@
-require "NeoPathfinding"
-
 puts "BASIC ELEMENTS"
 2.times do
   get_statistics(:phantom_settlements,   "appear on maps but do not actually exist. Theories include copywrite traps, or suppression of evidence.",
