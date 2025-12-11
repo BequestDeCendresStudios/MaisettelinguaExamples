@@ -1,5 +1,3 @@
-require "NeoPathfinding"
-
 def create_rule
   a = "le bati"
   b = "le sofa"
