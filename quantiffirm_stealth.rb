@@ -27,6 +27,32 @@ def risk_factor(risk)
   end
 end
 
+def thresholding(a, y, x)
+  cognitive_threshold = 100
+  probability         = a
+  
+  #puts probability
+  
+  odds                = probability / ( 1.0 - probability )
+  charted_assessment  = cognitive_threshold * probability
+    
+  size_of_map_y = y
+  size_of_map_x = x
+    
+  map_cognitive_y = ( size_of_map_y * charted_assessment ) % size_of_map_y
+  map_cognitive_x = ( size_of_map_x * charted_assessment ) % size_of_map_x
+  
+  puts "LEARNING ASSESSMENT"
+  puts "The current map size is: #{x} by #{y}"
+  puts "The current cognitive threshold is #{cognitive_threshold}"
+  puts "The current probability is #{probability}"
+  puts "The current odds of this gameplay feature straining the player is #{odds}"
+  puts "The current assessment of learning ability is #{charted_assessment}"
+  puts "Therefore the approximate location of cognitive loading is the tile of #{map_cognitive_y.to_i} and #{map_cognitive_x.to_i}."
+  puts quantiffirm("The cognitive threshold is #{cognitive_threshold}", "the approximate location of cognitive loading is the tile of #{map_cognitive_y} and #{map_cognitive_x}", probability)  
+  puts " "
+end
+
 gameplay = [
   [ :lure, "is primarily used to lear enemies to your general direction.", 0.09487368 ],
   [ :trap,  "temporarily disables enemy long enough for you to run away.", 0.02371842 ],
@@ -56,30 +82,37 @@ stunning = gameplay[2][0], gameplay[2][1], gameplay[2][2]
 
 print "Luring: "
 puts "#{risk_factor(luring[2])}"
+puts "#{thresholding(luring[2], 640, 480)}"
 
 print "Trapping: "
 puts "#{risk_factor(trapping[2])}"
+puts "#{thresholding(trapping[2], 640, 480)}"
 
 print "Stunning: "
 puts "#{risk_factor(stunning[2])}"
+puts "#{thresholding(stunning[2], 640, 480)}"
 
 mechanical_hammer = weapons[0][0], weapons[0][1], weapons[0][2]
 lunar_calenders   = weapons[1][0], weapons[1][1], weapons[1][2]
 
 print "Mechanical Hammer: "
 puts "#{risk_factor(mechanical_hammer[2])}"
+puts "#{thresholding(mechanical_hammer[2], 640, 480)}"
 
 print "Lunar Calender: "
 puts "#{risk_factor(lunar_calenders[2])}"
+puts "#{thresholding(lunar_calenders[2], 640, 480)}"
 
 who  = information[0][0], information[0][1], information[0][2]
 what = information[1][0], information[1][1], information[1][2]
 
 print "Finding out Who: "
 puts "#{risk_factor(who[2])}"
+puts "#{thresholding(who[2], 640, 480)}"
 
 print "Finding out What: "
 puts "#{risk_factor(what[2])}"
+puts "#{thresholding(what[2], 640, 480)}"
 
 acid_dragons    = monsters[0][0], monsters[0][1], monsters[0][2]
 sea_gargoyals   = monsters[1][0], monsters[1][1], monsters[1][2]
@@ -88,12 +121,16 @@ traitorous_nuns = monsters[3][0], monsters[3][1], monsters[3][2]
 
 print "Acid Dragons: "
 puts "#{risk_factor(acid_dragons[2])}"
+puts "#{thresholding(acid_dragons[2], 640, 480)}"
 
 print "Sea Gargoyals: "
 puts "#{risk_factor(sea_gargoyals[2])}"
+puts "#{thresholding(sea_gargoyals[2], 640, 480)}"
 
 print "Acid Serpents: "
 puts "#{risk_factor(acid_serpents[2])}"
+puts "#{thresholding(acid_serpents[2], 640, 480)}"
 
 print "Traitorous Nuns: "
 puts "#{risk_factor(traitorous_nuns[2])}"
+puts "#{thresholding(traitorous_nuns[2], 640, 480)}"
